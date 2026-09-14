@@ -1,0 +1,70 @@
+.myCanvas_pop {
+    display: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 100;
+    position: fixed;
+    width:  100%;
+    max-width: 80%;
+    height: 100%;
+    max-height: 800px;
+    background: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+}
+
+.pop_content {
+    width: calc(100% - 10px);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.pop_bar {
+    width: 100%;
+    height: 30px;
+}
+
+.pop_click {
+}
+.pop_click:hover {
+    cursor: pointer;
+}
+
+.pop_close {
+    font-size: 20px;
+    width: 20px;
+    color: black;
+    margin-left: auto;
+}
+.pop_close:hover {
+    cursor: pointer;
+}
+
+.pop_entry {
+    width: calc(100% - 20px);
+    border-bottom: 1px solid gray;
+    padding: 10px 0px 10px 0px;
+}
+
+.pop_entry_bar {
+    width: 100%;
+    font-size: 20px;
+    height: 25px;
+    margin-top: 50px;
+}
+
+.pop_img {
+    width: 25px;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+th, td {
+    width: 25%;
+}
