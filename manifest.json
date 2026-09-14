@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
   "name": "Canvas Grades Plus",
-  "version": "1.0",
+  "version": "1.1",
   "description": "An easy way to keep track of your assignments. Adds an option to view grades and assignments for ALL your classes on a single popup.",
    "host_permissions": [
-    "https://murraystate.instructure.com/*"
+    "https://*.instructure.com/*"
   ],
   "action": {
     "default_icon": "myCanvas_icon.png"
@@ -14,13 +14,13 @@
             "resources": [
               "myCanvas_pen.svg"
               ],
-            "matches": ["https://murraystate.instructure.com/*"]
+            "matches": ["https://*.instructure.com/*"]
         }
     ],
   "content_scripts": [
     {
       "matches": [
-        "https://murraystate.instructure.com/*"
+        "https://*.instructure.com/*"
       ],
       "css":["classchecker.css"],
       "js": [
