@@ -1,3 +1,5 @@
+const CANVAS_URL = window.location.origin;
+
 async function main() {
     // create open button
     // <li class="ic-app-header__menu-list-item" aria-current="page">
@@ -46,7 +48,7 @@ async function main() {
         popbox.innerHTML = "collecting classes...";
         // collect classes
         const response = await fetch(
-            "https://murraystate.instructure.com/api/v1/courses?enrollment_state=active"
+            `${CANVAS_URL}/api/v1/courses?enrollment_state=active`
         );
 
         popbox.innerHTML = "gathering class data...";
@@ -61,7 +63,7 @@ async function main() {
         let assignments = [];
         for (const card of classCards) {
             const response = await fetch(
-                `https://murraystate.instructure.com/api/v1/courses/${card[0]}/assignments?include[]=submission`
+                `${CANVAS_URL}/api/v1/courses/${card[0]}/assignments?include[]=submission`
             );
             const assigns = await response.json();
             assigns.forEach(assign => {
@@ -149,7 +151,7 @@ async function main() {
                 <tr>
                     <th>${assignment.course_code}</th>
                     <th>
-                        <a href="https://murraystate.instructure.com/courses/${assignment.course_id}/assignments/${assignment.id}/">
+                        <a href="${CANVAS_URL}}/courses/${assignment.course_id}/assignments/${assignment.id}/">
                             ${assignment.name}
                         </a>
                     </th>
@@ -195,7 +197,7 @@ async function main() {
             new_html += `
                 <tr>
                     <th>${und.course_code}</th>
-                    <th><a href="https://murraystate.instructure.com/courses/${und.course_id}/assignments/${und.id}/">${und.name}</a></th>
+                    <th><a href="${CANVAS_URL}/courses/${und.course_id}/assignments/${und.id}/">${und.name}</a></th>
                     <th>${due}</th>
                     <th>${grade}</th>
                 </tr>
@@ -242,7 +244,7 @@ async function main() {
             new_html += `
                 <tr>
                     <th>${und.course_code}</th>
-                    <th><a href="https://murraystate.instructure.com/courses/${und.course_id}/assignments/${und.id}/">${und.name}</a></th>
+                    <th><a href="${CANVAS_URL}/courses/${und.course_id}/assignments/${und.id}/">${und.name}</a></th>
                     <th>${due}</th>
                     <th>${submitted}</th>
                     <th>${grade}</th>
