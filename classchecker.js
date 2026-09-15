@@ -155,7 +155,7 @@ async function main() {
                             ${assignment.name}
                         </a>
                     </th>
-                    <th>${assignment.due_at.split("T")[0]}</th>
+                    <th>${formatCanvasDate(assignment.due_at)}</th>
                     <th>0/${assignment.points_possible}</th>
                 </tr>
             `;
@@ -191,7 +191,7 @@ async function main() {
             if (und.due_at == null) {
                 due = "NaN";
             } else {
-                due = und.due_at.split("T")[0];
+                due = formatCanvasDate(und.due_at);
             }
 
             new_html += `
@@ -227,7 +227,7 @@ async function main() {
             if (und.submitted == null) {
                 submitted = "NaN";
             } else {
-                submitted = und.submitted.split("T")[0];
+                submitted = formatCanvasDate(und.submitted);
             }
             if (und.grade == null) {
                 grade = "NaN";
@@ -239,7 +239,7 @@ async function main() {
             if (und.due_at == null) {
                 due = "NaN";
             } else {
-                due = und.due_at.split("T")[0];
+                due = formatCanvasDate(und.due_at);
             }
             new_html += `
                 <tr>
@@ -276,6 +276,18 @@ function waitForCards(doc) {
         };
 
         check();
+    });
+}
+
+function formatCanvasDate(dateString) {
+    if (!dateString) return "NaN";
+
+    const date = new Date(dateString);
+
+    return date.toLocaleDateString("en-CA", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
     });
 }
 
